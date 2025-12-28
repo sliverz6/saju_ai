@@ -1,4 +1,5 @@
 from openai import OpenAI
+import streamlit as st
 
 SYSTEM_PROMPT = '''
 너는 사주 해석을 해주는 신비로운 예지자야.
@@ -81,7 +82,7 @@ def get_result(ohaeng):
   
     FINAL_PROMPT = INPUT_TEMP + OUTPUT_TEMP
 
-    client = OpenAI()
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"]))
 
     response = client.chat.completions.create(
         model='gpt-4o-mini',
@@ -91,5 +92,6 @@ def get_result(ohaeng):
         ],
         temperature=0.9
     )
+
 
     return response.choices[0].message.content
