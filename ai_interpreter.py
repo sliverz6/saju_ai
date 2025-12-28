@@ -82,7 +82,7 @@ def get_result(ohaeng):
   
     FINAL_PROMPT = INPUT_TEMP + OUTPUT_TEMP
 
-    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"]))
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
     response = client.chat.completions.create(
         model='gpt-4o-mini',
@@ -95,3 +95,4 @@ def get_result(ohaeng):
 
 
     return response.choices[0].message.content
+
